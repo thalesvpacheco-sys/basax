@@ -1,0 +1,21 @@
+{
+  "name": "basax-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da Basax Engenharia (Goiânia/GO).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
