@@ -19,7 +19,15 @@ npm run build     # gera a versão de produção em dist/
 npm run preview   # serve dist/ localmente para conferência
 ```
 
-Para publicar, envie o conteúdo de `dist/` para qualquer hospedagem estática (Vercel, Netlify, Cloudflare Pages, cPanel etc.).
+## Deploy (Hostinger — https://basax.grifo.agency)
+
+Site do tipo **PHP/HTML** na Hostinger. A cada push na `main`, o GitHub Actions gera o build e publica o conteúdo de `dist/` na branch **`hostinger`**.
+
+Configuração única no hPanel: **Avançado → Git** → repositório `https://github.com/thalesvpacheco-sys/basax.git`, branch `hostinger`, diretório vazio (raiz do `public_html`). Ative o **deploy automático** (webhook) para publicar a cada push.
+
+Alternativa manual: `npm run build` e envie o **conteúdo** de `dist/` (incluindo o `.htaccess`) para `public_html` pelo Gerenciador de Arquivos.
+
+O `public/.htaccess` força HTTPS, ativa compressão, cabeçalhos de segurança e cache longo para os assets com hash.
 
 ## Estrutura
 

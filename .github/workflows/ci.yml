@@ -1,9 +1,12 @@
-name: CI
+name: Build e deploy
 
 on:
   push:
     branches: [main]
   pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -16,3 +19,16 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+
+      # Publica o conteúdo de dist/ na branch "hostinger".
+      # Na Hostinger: Avançado → Git → repositório deste projeto, branch "hostinger", diretório public_html.
+      - name: Publicar dist/ na branch hostinger
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cd dist
+          git init -q -b hostinger
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" hostinger
