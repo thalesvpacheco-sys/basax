@@ -19,15 +19,41 @@ npm run build     # gera a versão de produção em dist/
 npm run preview   # serve dist/ localmente para conferência
 ```
 
-## Deploy (Hostinger — https://basax.grifo.agency)
+## Deploy
 
-Site do tipo **PHP/HTML** na Hostinger. A cada push na `main`, o GitHub Actions gera o build e publica o conteúdo de `dist/` na branch **`hostinger`**.
+A cada push na `main`, o GitHub Actions gera o build e publica o conteúdo de `dist/` em duas branches:
 
-Configuração única no hPanel: **Avançado → Git** → repositório `https://github.com/thalesvpacheco-sys/basax.git`, branch `hostinger`, diretório vazio (raiz do `public_html`). Ative o **deploy automático** (webhook) para publicar a cada push.
+| Branch | Destino | Uso |
+|---|---|---|
+| `hostgator` | **HostGator (cPanel)** — https://basaxengenharia.com.br | Produção |
+| `hostinger` | Hostinger (hPanel) — https://basax.grifo.agency | Homologação |
 
-Alternativa manual: `npm run build` e envie o **conteúdo** de `dist/` (incluindo o `.htaccess`) para `public_html` pelo Gerenciador de Arquivos.
+### HostGator (produção)
 
-O `public/.htaccess` força HTTPS, ativa compressão, cabeçalhos de segurança e cache longo para os assets com hash.
+A branch `hostgator` tem o site pronto e o `.cpanel.yml` (origem: `deploy/.cpanel.yml`), que copia tudo para `~/public_html/`.
+
+1. cPanel → **Git™ Version Control** → **Create** → ative *Clone a Repository*.
+2. Clone URL: `https://github.com/thalesvpacheco-sys/basax.git` · Repository Path: ex. `repositories/basax` (fora do `public_html`).
+3. Depois de criado, em **Manage → Basic Information**, troque o *Checked-Out Branch* para `hostgator`.
+4. Na aba **Pull or Deploy**: **Update from Remote** e depois **Deploy HEAD Commit**.
+
+Para publicar uma nova versão: push na `main` → aguarde o Actions → no cPanel, **Update from Remote** + **Deploy HEAD Commit**.
+
+Se o domínio não usar o `public_html` principal (domínio adicional), ajuste o `DEPLOYPATH` em `deploy/.cpanel.yml`.
+
+O deploy **não apaga** arquivos que já estavam no `public_html` (ex.: o WordPress antigo). Depois de fazer backup do WordPress, remova os arquivos dele manualmente.
+
+### Hostinger (homologação)
+
+hPanel → **Avançado → Git** → mesmo repositório, branch `hostinger`, diretório vazio (raiz do `public_html`), com deploy automático (webhook).
+
+### Manual
+
+`npm run build` e envie o **conteúdo** de `dist/` (incluindo o `.htaccess`) para o `public_html` pelo Gerenciador de Arquivos.
+
+### .htaccess
+
+O `public/.htaccess` força HTTPS e domínio sem `www`, redireciona as URLs do WordPress antigo (`/servicos/condominio/`, `/pintura-predial/` etc.) para as páginas novas, bloqueia `wp-login.php`/`xmlrpc.php`/`wp-admin`, ativa compressão, cabeçalhos de segurança e cache longo para os assets com hash.
 
 ## Estrutura
 
@@ -53,10 +79,10 @@ public/                 arquivos servidos como estão (logos, favicon, robots, s
 
 O layout é o protótipo aprovado; alguns blocos ainda usam conteúdo provisório:
 
-- [ ] Equipe: nomes reais e fotos (hoje `[Nome Sobrenome]` e ilustração)
-- [ ] Portfólio: fotos, nomes e escopo das obras
-- [ ] Depoimentos reais e autorizados
-- [ ] Logos dos clientes (hoje em texto)
+- [ ] Equipe: nomes reais e fotos — seção oculta (`hidden`) e link "Equipe" comentado no menu até chegarem as fotos
+- [ ] Portfólio: nomes e escopo reais das obras (fotos vieram do site antigo)
+- [x] Depoimentos reais (avaliações do Google)
+- [x] Logos dos clientes
 - [ ] Imagem de compartilhamento `og:image` (1200×630, PNG/JPG) em `public/` e a tag correspondente no `<head>`
-- [ ] Confirmar o domínio final (`canonical`, `og:url`, `sitemap.xml`, `robots.txt` apontam para `basaxengenharia.com.br`)
+- [x] Domínio final `basaxengenharia.com.br` (`canonical`, `og:url`, `sitemap.xml`, `robots.txt`)
 - [ ] Coordenadas exatas do endereço nos dados estruturados (JSON-LD) do `<head>`

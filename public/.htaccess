@@ -1,14 +1,35 @@
-# Hostinger (LiteSpeed/Apache) — configuração do site estático Basax
+# Apache/LiteSpeed (HostGator e Hostinger) — configuração do site estático Basax
 
 Options -Indexes
 DirectoryIndex index.html
 
-# Força HTTPS
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Força HTTPS
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # www → sem www
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # Bloqueia arquivos internos de deploy e restos do WordPress antigo
+  RewriteRule (^|/)\.cpanel\.yml$ - [F,L]
+  RewriteRule ^(wp-login\.php|xmlrpc\.php|wp-admin(/.*)?)$ - [F,L]
+
+  # URLs do site antigo (WordPress) → páginas equivalentes do site novo
+  RewriteRule ^servicos/condominio/?$   /#servico-condominios  [NE,L,R=301]
+  RewriteRule ^pintura-predial/?$       /#servico-retrofit     [NE,L,R=301]
+  RewriteRule ^servicos/adm/?$          /#servico-administracao [NE,L,R=301]
+  RewriteRule ^servicos/comercial/?$    /#servico-comerciais   [NE,L,R=301]
+  RewriteRule ^servicos/industrial/?$   /#servico-industriais  [NE,L,R=301]
+  RewriteRule ^servicos/residencial/?$  /#servico-residenciais [NE,L,R=301]
+  RewriteRule ^servicos/?$              /#servicos             [NE,L,R=301]
+  RewriteRule ^a-empresa/?$             /#empresa              [NE,L,R=301]
+  RewriteRule ^(contato|orcamento)/?$   /#orcamento            [NE,L,R=301]
+  RewriteRule ^(feed|comments/feed)/?$  /                      [L,R=301]
 </IfModule>
 
 # Cabeçalhos de segurança

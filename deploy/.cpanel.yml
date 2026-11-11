@@ -1,0 +1,10 @@
+---
+# Deploy no cPanel (HostGator) — Git Version Control
+# Este arquivo vai na raiz da branch "hostgator", que já contém o site pronto (build do Vite).
+# No cPanel: Git Version Control → repositório → aba "Pull or Deploy" → "Update from Remote" e depois "Deploy HEAD Commit".
+# Copia tudo para o public_html, sem a pasta .git e sem este arquivo.
+# Não usa --delete: arquivos que já estão no public_html (ex.: o WordPress antigo) não são apagados.
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' ./ $DEPLOYPATH

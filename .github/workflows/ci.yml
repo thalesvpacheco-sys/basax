@@ -32,3 +32,15 @@ jobs:
           git add -A
           git commit -q -m "Deploy ${GITHUB_SHA::7}"
           git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" hostinger
+
+      # Mesmo build na branch "hostgator", com o .cpanel.yml na raiz.
+      # No cPanel: Git Version Control → clonar este repositório na branch "hostgator" → Deploy HEAD Commit.
+      - name: Publicar dist/ na branch hostgator
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cp deploy/.cpanel.yml dist/.cpanel.yml
+          cd dist
+          git checkout -q -b hostgator
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA::7} (cPanel)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" hostgator
