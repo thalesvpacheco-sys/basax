@@ -30,7 +30,9 @@ A cada push na `main`, o GitHub Actions gera o build e publica o conteúdo de `d
 
 ### HostGator (produção)
 
-A branch `hostgator` tem o site pronto e o `.cpanel.yml` (origem: `deploy/.cpanel.yml`), que copia tudo para `~/public_html/`.
+A branch `hostgator` tem o site pronto e o `.cpanel.yml` (origem: `deploy/.cpanel.yml`), que copia tudo para `~/basax-site/`.
+
+`basaxengenharia.com.br` é **domínio adicional** nessa conta: o `public_html` pertence a outro site (`basaengenharia.com.br`). Não aponte o deploy para o `public_html`.
 
 1. cPanel → **Git™ Version Control** → **Create** → ative *Clone a Repository*.
 2. Clone URL: `https://github.com/thalesvpacheco-sys/basax.git` · Repository Path: ex. `repositories/basax` (fora do `public_html`).
@@ -39,9 +41,9 @@ A branch `hostgator` tem o site pronto e o `.cpanel.yml` (origem: `deploy/.cpane
 
 Para publicar uma nova versão: push na `main` → aguarde o Actions → no cPanel, **Update from Remote** + **Deploy HEAD Commit**.
 
-Se o domínio não usar o `public_html` principal (domínio adicional), ajuste o `DEPLOYPATH` em `deploy/.cpanel.yml`.
+A raiz do domínio em cPanel → **Domínios** precisa ser `basax-site`. Se mudar, ajuste o `DEPLOYPATH` em `deploy/.cpanel.yml`.
 
-O deploy **não apaga** arquivos que já estavam no `public_html` (ex.: o WordPress antigo). Depois de fazer backup do WordPress, remova os arquivos dele manualmente.
+O deploy **não apaga** arquivos que já estavam na pasta de destino.
 
 ### Hostinger (homologação)
 
