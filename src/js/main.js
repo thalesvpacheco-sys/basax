@@ -1,7 +1,6 @@
 import { SERVICES } from './services.js';
 
 const WHATSAPP = '5562981214963';
-const DEFAULT_TITLE = document.title;
 
 /* ------------------------------------------------------------ header + menu mobile */
 function initHeader() {
@@ -34,7 +33,10 @@ function initReveal() {
   els.forEach((el) => io.observe(el));
 }
 
-/* ------------------------------------------------------------ páginas de serviço (#servico-xxx) */
+/* ------------------------------------------------------------ páginas de serviço */
+// Em produção cada serviço é uma página estática gerada no build (vite.config.js).
+// Aqui só tratamos os links antigos (#servico-xxx) e o modo de desenvolvimento,
+// em que o Vite entrega o index.html para /servicos/... e o conteúdo é montado no navegador.
 function el(tag, props = {}, children = []) {
   const node = Object.assign(document.createElement(tag), props);
   node.append(...children);
@@ -53,35 +55,27 @@ function renderService(key, s) {
   document.getElementById('sp-others').replaceChildren(
     ...Object.entries(SERVICES)
       .filter(([k]) => k !== key)
-      .map(([k, v]) => el('a', { href: `#servico-${k}`, textContent: v.title })),
+      .map(([, v]) => el('a', { href: v.path, textContent: v.title })),
   );
-  document.title = `${s.title} — Basax Engenharia`;
+  document.title = `${s.seoTitle} | Basax Engenharia`;
 }
 
-function initRouter() {
-  const route = () => {
-    const hash = decodeURIComponent(location.hash.slice(1));
-    const key = hash.startsWith('servico-') ? hash.slice(8) : null;
-    const service = key && Object.hasOwn(SERVICES, key) ? SERVICES[key] : null;
+function initServicePages() {
+  // Links antigos no formato /#servico-condominios → endereço novo
+  const hash = decodeURIComponent(location.hash.slice(1));
+  if (hash.startsWith('servico-')) {
+    const key = hash.slice(8);
+    if (Object.hasOwn(SERVICES, key)) { location.replace(SERVICES[key].path); return; }
+  }
 
-    if (service) {
-      renderService(key, service);
-      document.body.classList.add('detail');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      document.getElementById('sp-title').focus({ preventScroll: true });
-      return;
-    }
-
-    const wasDetail = document.body.classList.contains('detail');
-    document.body.classList.remove('detail');
-    document.title = DEFAULT_TITLE;
-    if (wasDetail && hash) {
-      const target = document.getElementById(hash);
-      if (target) requestAnimationFrame(() => target.scrollIntoView());
-    }
-  };
-  window.addEventListener('hashchange', route);
-  route();
+  const path = location.pathname.endsWith('/') ? location.pathname : `${location.pathname}/`;
+  const entry = Object.entries(SERVICES).find(([, s]) => s.path === path);
+  if (!entry) return;
+  if (!document.body.dataset.service) {
+    // modo de desenvolvimento: a página não veio pré-renderizada
+    renderService(...entry);
+    document.body.classList.add('detail');
+  }
 }
 
 /* ------------------------------------------------------------ formulário de orçamento -> WhatsApp */
@@ -109,6 +103,7 @@ function initQuoteForm() {
 
 /* ------------------------------------------------------------ cenas 3D (carregadas sob demanda) */
 function initScenes() {
+  if (!document.getElementById('c-hero') && !document.getElementById('c-obra')) return; // páginas sem cena 3D
   const hasWebGL = (() => {
     try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
     catch { return false; }
@@ -123,6 +118,6 @@ function initScenes() {
 document.getElementById('footer-year').textContent = String(new Date().getFullYear());
 initHeader();
 initReveal();
-initRouter();
+initServicePages();
 initQuoteForm();
 initScenes();

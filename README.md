@@ -1,6 +1,6 @@
 # Basax Engenharia — site institucional
 
-Site estático de página única com páginas de serviço por hash (`#servico-<chave>`) e duas cenas 3D em Three.js.
+Site estático: home de página única, 6 páginas de serviço geradas no build (nos mesmos endereços do WordPress antigo) e duas cenas 3D em Three.js.
 
 ## Stack
 
@@ -53,9 +53,21 @@ hPanel → **Avançado → Git** → mesmo repositório, branch `hostinger`, dir
 
 `npm run build` e envie o **conteúdo** de `dist/` (incluindo o `.htaccess`) para o `public_html` pelo Gerenciador de Arquivos.
 
+### SEO
+
+- **Páginas de serviço estáticas**: o plugin `basax-seo-pages` em `vite.config.js` gera, no build, uma página por serviço em `dist/<path>/index.html` a partir do `index.html`, com título, description, canonical, Open Graph e JSON-LD (`Service` + `BreadcrumbList`) próprios. Os endereços (`/servicos/condominio/`, `/pintura-predial/`, `/servicos/adm/`, `/servicos/comercial/`, `/servicos/industrial/`, `/servicos/residencial/`) são os mesmos do WordPress, para manter o posicionamento no Google. Links antigos `/#servico-xxx` redirecionam para eles.
+- **`sitemap.xml`** é gerado no build com todas as páginas e `lastmod` do dia (não editar à mão).
+- **Home**: JSON-LD `GeneralContractor` + `WebSite` (endereço, geo, telefone, certificações, serviços).
+- **Compartilhamento**: `public/og-image.jpg` (1200×630), ícones `apple-touch-icon.png`, `favicon-32.png`, `icon-192/512.png` e `img/logo-512.png` (logo para o Google).
+- **404**: `public/404.html` (noindex).
+
+Para criar ou editar um serviço: altere `src/js/services.js` (`path`, `seoTitle`, `description` e o conteúdo). O build gera a página e atualiza o sitemap.
+
+Depois de publicar: cadastrar o domínio no **Google Search Console**, enviar `https://basaxengenharia.com.br/sitemap.xml` e atualizar o site no **Perfil da Empresa no Google** (hoje "Basa Engenharia").
+
 ### .htaccess
 
-O `public/.htaccess` força HTTPS e domínio sem `www`, redireciona as URLs do WordPress antigo (`/servicos/condominio/`, `/pintura-predial/` etc.) para as páginas novas, bloqueia `wp-login.php`/`xmlrpc.php`/`wp-admin`, ativa compressão, cabeçalhos de segurança e cache longo para os assets com hash.
+O `public/.htaccess` força HTTPS e domínio sem `www`, redireciona URLs do WordPress sem equivalente (`/a-empresa/`, `/contato/`, `/orcamento/`, `/servicos/`) para a seção da home, usa `/404.html` como página de erro, bloqueia `wp-login.php`/`xmlrpc.php`/`wp-admin`, ativa compressão, cabeçalhos de segurança e cache longo para os assets com hash.
 
 ## Estrutura
 
@@ -65,7 +77,8 @@ src/styles/main.css     estilos
 src/js/main.js          menu, roteamento dos serviços, formulário → WhatsApp
 src/js/services.js      textos das páginas de serviço
 src/js/scene3d.js       cenas 3D do hero e da seção "Como trabalhamos"
-public/                 arquivos servidos como estão (logos, favicon, robots, sitemap)
+public/                 arquivos servidos como estão (logos, ícones, og-image, robots, 404, política de privacidade)
+vite.config.js          build + geração das páginas de serviço e do sitemap
 ```
 
 ## Onde editar
@@ -85,6 +98,6 @@ O layout é o protótipo aprovado; alguns blocos ainda usam conteúdo provisóri
 - [ ] Portfólio: nomes e escopo reais das obras (fotos vieram do site antigo)
 - [x] Depoimentos reais (avaliações do Google)
 - [x] Logos dos clientes
-- [ ] Imagem de compartilhamento `og:image` (1200×630, PNG/JPG) em `public/` e a tag correspondente no `<head>`
+- [x] Imagem de compartilhamento `og:image` (1200×630)
 - [x] Domínio final `basaxengenharia.com.br` (`canonical`, `og:url`, `sitemap.xml`, `robots.txt`)
-- [ ] Coordenadas exatas do endereço nos dados estruturados (JSON-LD) do `<head>`
+- [x] Coordenadas do endereço no JSON-LD (do Google Maps) — conferir CEP com a Basax

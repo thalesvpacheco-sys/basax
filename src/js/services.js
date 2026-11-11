@@ -1,9 +1,15 @@
 /**
- * Conteúdo das páginas de serviço (rota #servico-<chave>).
+ * Conteúdo das páginas de serviço.
+ * Cada serviço vira uma página estática no build (vite.config.js), no endereço `path`
+ * (os mesmos endereços do site antigo em WordPress, para manter o posicionamento no Google).
+ * `seoTitle` e `description` alimentam o <title>, a meta description e as tags de compartilhamento.
  * Para editar textos de um serviço, altere apenas este arquivo.
  */
 export const SERVICES = {
   "condominios": {
+    "path": "/servicos/condominio/",
+    "seoTitle": "Reforma de condomínios em Goiânia",
+    "description": "Reforma de fachadas, recuperação estrutural, impermeabilização e áreas comuns de condomínios em Goiânia, com relatórios para o síndico e parcelamento direto.",
     "title": "Reformas de condomínios",
     "icon": "condominio",
     "intro": "Experiência em condomínios residenciais e comerciais: da manutenção estrutural preventiva à modernização de fachadas e áreas de lazer, com previsibilidade para o caixa do prédio.",
@@ -33,6 +39,9 @@ export const SERVICES = {
     ]
   },
   "retrofit": {
+    "path": "/pintura-predial/",
+    "seoTitle": "Retrofit e pintura de fachadas prediais em Goiânia",
+    "description": "Retrofit de fachadas e pintura predial em Goiânia: tratamento de fissuras e infiltrações, texturas, pastilhas, ACM e pele de vidro, conforme as normas técnicas.",
     "title": "Retrofit de fachadas",
     "icon": "retrofit",
     "intro": "Mais do que pintura: o retrofit renova a estética, aumenta a eficiência e valoriza o imóvel — com diagnóstico completo antes do novo acabamento.",
@@ -62,6 +71,9 @@ export const SERVICES = {
     ]
   },
   "administracao": {
+    "path": "/servicos/adm/",
+    "seoTitle": "Obra por administração em Goiânia",
+    "description": "Obra por administração em Goiânia: você paga o custo real de materiais e mão de obra e a Basax faz a gestão técnica por uma taxa fixa, com total transparência.",
     "title": "Obra por administração",
     "icon": "adm",
     "intro": "Você paga diretamente o custo real de materiais e mão de obra. A Basax assume a responsabilidade técnica, a gestão e a execução por uma taxa de administração fixa — sem margens de contingência embutidas.",
@@ -91,6 +103,9 @@ export const SERVICES = {
     ]
   },
   "comerciais": {
+    "path": "/servicos/comercial/",
+    "seoTitle": "Obras e reformas comerciais em Goiânia",
+    "description": "Construção e reforma de lojas, sedes corporativas e espaços comerciais em Goiânia, com cronograma rigoroso e instalações compatibilizadas.",
     "title": "Obras comerciais",
     "icon": "comercial",
     "intro": "Construção e reforma de espaços comerciais e corporativos, do projeto à entrega, fiéis ao projeto aprovado pelo cliente.",
@@ -120,6 +135,9 @@ export const SERVICES = {
     ]
   },
   "industriais": {
+    "path": "/servicos/industrial/",
+    "seoTitle": "Obras industriais em Goiânia",
+    "description": "Construção e reforma de instalações industriais em Goiânia, do projeto à entrega das chaves, com prazo e orçamento definidos em contrato.",
     "title": "Obras industriais",
     "icon": "industrial",
     "intro": "Construção e reforma de instalações industriais, com a Basax responsável por todo o escopo: do projeto à entrega das chaves.",
@@ -149,6 +167,9 @@ export const SERVICES = {
     ]
   },
   "residenciais": {
+    "path": "/servicos/residencial/",
+    "seoTitle": "Construção e reforma residencial em Goiânia",
+    "description": "Construção de casas de médio e alto padrão e reforma de casas e apartamentos em Goiânia, da infraestrutura ao acabamento, fiel ao projeto.",
     "title": "Obras residenciais",
     "icon": "residencial",
     "intro": "Construção de residências de médio e alto padrão e reformas de casas e apartamentos — da infraestrutura ao acabamento, com fidelidade ao projeto arquitetônico.",

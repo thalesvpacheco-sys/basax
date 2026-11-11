@@ -2,6 +2,7 @@
 
 Options -Indexes
 DirectoryIndex index.html
+ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -19,13 +20,9 @@ DirectoryIndex index.html
   RewriteRule (^|/)\.cpanel\.yml$ - [F,L]
   RewriteRule ^(wp-login\.php|xmlrpc\.php|wp-admin(/.*)?)$ - [F,L]
 
-  # URLs do site antigo (WordPress) → páginas equivalentes do site novo
-  RewriteRule ^servicos/condominio/?$   /#servico-condominios  [NE,L,R=301]
-  RewriteRule ^pintura-predial/?$       /#servico-retrofit     [NE,L,R=301]
-  RewriteRule ^servicos/adm/?$          /#servico-administracao [NE,L,R=301]
-  RewriteRule ^servicos/comercial/?$    /#servico-comerciais   [NE,L,R=301]
-  RewriteRule ^servicos/industrial/?$   /#servico-industriais  [NE,L,R=301]
-  RewriteRule ^servicos/residencial/?$  /#servico-residenciais [NE,L,R=301]
+  # URLs do site antigo (WordPress) sem página equivalente → seção da home.
+  # As páginas de serviço (/servicos/condominio/, /pintura-predial/ etc.) existem de verdade
+  # no site novo, nos mesmos endereços do WordPress, e não precisam de redirecionamento.
   RewriteRule ^servicos/?$              /#servicos             [NE,L,R=301]
   RewriteRule ^a-empresa/?$             /#empresa              [NE,L,R=301]
   RewriteRule ^(contato|orcamento)/?$   /#orcamento            [NE,L,R=301]
@@ -51,6 +48,9 @@ DirectoryIndex index.html
 <IfModule mod_headers.c>
   <FilesMatch "\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|png|jpe?g|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
   <FilesMatch "\.(svg|webmanifest|xml|txt)$">
     Header set Cache-Control "public, max-age=86400"

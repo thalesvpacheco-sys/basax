@@ -3,47 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Basax Engenharia — Obras e reformas em Goiânia</title>
-<meta name="description" content="Basax Engenharia: obras comerciais, industriais e residenciais, reformas de condomínios, obra por administração e retrofit de fachadas em Goiânia. Desde 2011.">
+<!-- SEO: nas páginas de serviço, as tags marcadas abaixo são reescritas no build (vite.config.js) -->
+<title>Basax Engenharia | Construtora em Goiânia: obras e reformas</title>
+<meta name="description" content="Construtora em Goiânia desde 2011: reformas de condomínios, retrofit de fachadas, obras comerciais, industriais e residenciais e obra por administração. Certificada ISO 9001 e PBQP-H.">
 <link rel="canonical" href="https://basaxengenharia.com.br/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#253438">
 <meta name="format-detection" content="telephone=no">
+<meta name="geo.region" content="BR-GO">
+<meta name="geo.placename" content="Goiânia">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Basax Engenharia">
-<meta property="og:title" content="Basax Engenharia — Engenharia de confiança. Arquitetura de futuro.">
-<meta property="og:description" content="Obras comerciais, industriais e residenciais, reformas de condomínios e retrofit de fachadas em Goiânia. Desde 2011.">
+<meta property="og:title" content="Basax Engenharia | Construtora em Goiânia">
+<meta property="og:description" content="Reformas de condomínios, retrofit de fachadas e obras comerciais, industriais e residenciais em Goiânia. Desde 2011.">
 <meta property="og:url" content="https://basaxengenharia.com.br/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://basaxengenharia.com.br/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Basax Engenharia — construtora em Goiânia desde 2011">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Basax Engenharia | Construtora em Goiânia">
+<meta name="twitter:description" content="Reformas de condomínios, retrofit de fachadas e obras comerciais, industriais e residenciais em Goiânia. Desde 2011.">
+<meta name="twitter:image" content="https://basaxengenharia.com.br/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/src/styles/main.css">
 
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld-org">
 {
   "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  "name": "Basax Engenharia",
-  "url": "https://basaxengenharia.com.br/",
-  "logo": "https://basaxengenharia.com.br/img/logo.svg",
-  "email": "basax@basaxengenharia.com.br",
-  "telephone": "+55-62-98121-4963",
-  "foundingDate": "2011",
-  "areaServed": "Goiânia, GO",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Av. Jamel Cecílio, Ed. New Business, Sala B25",
-    "addressLocality": "Goiânia",
-    "addressRegion": "GO",
-    "addressCountry": "BR"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": -16.7, "longitude": -49.25 }
+  "@graph": [
+    {
+      "@type": "GeneralContractor",
+      "@id": "https://basaxengenharia.com.br/#empresa",
+      "name": "Basax Engenharia",
+      "url": "https://basaxengenharia.com.br/",
+      "logo": "https://basaxengenharia.com.br/img/logo-512.png",
+      "image": "https://basaxengenharia.com.br/og-image.jpg",
+      "description": "Construtora em Goiânia desde 2011: reformas de condomínios, retrofit de fachadas, obras comerciais, industriais e residenciais e obra por administração.",
+      "email": "basax@basaxengenharia.com.br",
+      "telephone": "+55-62-98121-4963",
+      "foundingDate": "2011",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Jamel Cecílio, Ed. New Business, Sala B25 - Jardim Goiás",
+        "addressLocality": "Goiânia",
+        "addressRegion": "GO",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": -16.7096982, "longitude": -49.2779428 },
+      "hasMap": "https://maps.google.com/?cid=2922535934119759912",
+      "areaServed": [
+        { "@type": "City", "name": "Goiânia" },
+        { "@type": "State", "name": "Goiás" }
+      ],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "ISO 9001:2015" },
+        { "@type": "EducationalOccupationalCredential", "name": "PBQP-H — Programa Brasileiro da Qualidade e Produtividade do Habitat" }
+      ],
+      "knowsAbout": ["Reforma de condomínios", "Retrofit de fachadas", "Pintura predial", "Obra por administração", "Obras comerciais", "Obras industriais", "Obras residenciais", "Impermeabilização", "Recuperação estrutural"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://basaxengenharia.com.br/#site",
+      "url": "https://basaxengenharia.com.br/",
+      "name": "Basax Engenharia",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://basaxengenharia.com.br/#empresa" }
+    }
+  ]
 }
 </script>
 </head>
@@ -88,15 +126,15 @@
 
 <header class="site" id="top">
   <div class="wrap">
-    <a href="#inicio" aria-label="Basax Engenharia — início"><img class="logo" src="/img/logo.svg" alt="Basax Engenharia" width="134" height="46"></a>
+    <a href="/" aria-label="Basax Engenharia — início"><img class="logo" src="/img/logo.svg" alt="Basax Engenharia" width="134" height="46"></a>
     <nav class="main" id="menu-principal" aria-label="Principal">
-      <a class="nl" href="#empresa">A empresa</a>
-      <!-- <a class="nl" href="#equipe">Equipe</a>  (volta quando chegarem as fotos da equipe) -->
-      <a class="nl" href="#servicos">Serviços</a>
-      <a class="nl" href="#processo">Como trabalhamos</a>
-      <a class="nl" href="#portfolio">Portfólio</a>
-      <a class="nl" href="#contato">Contato</a>
-      <a class="btn btn-primary hdr-cta" href="#orcamento">Solicitar orçamento <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="nl" href="/#empresa">A empresa</a>
+      <!-- <a class="nl" href="/#equipe">Equipe</a>  (volta quando chegarem as fotos da equipe) -->
+      <a class="nl" href="/#servicos">Serviços</a>
+      <a class="nl" href="/#processo">Como trabalhamos</a>
+      <a class="nl" href="/#portfolio">Portfólio</a>
+      <a class="nl" href="/#contato">Contato</a>
+      <a class="btn btn-primary hdr-cta" href="/#orcamento">Solicitar orçamento <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </nav>
     <button type="button" class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h12" stroke="currentColor" stroke-width="2.2" fill="none"/></svg></button>
   </div>
@@ -115,7 +153,7 @@
       <h1>Engenharia de confiança. Arquitetura de futuro.</h1>
       <p class="lead">Da reforma do seu condomínio à sede da sua empresa: planejamos junto com você, explicamos cada etapa e entregamos o que foi combinado.</p>
       <div class="ctas">
-        <a class="btn btn-green" href="#orcamento">Solicitar orçamento</a>
+        <a class="btn btn-green" href="/#orcamento">Solicitar orçamento</a>
         <a class="btn btn-ghost" href="https://wa.me/5562981214963" target="_blank" rel="noopener">Falar no WhatsApp</a>
       </div>
       <p class="facts">Desde 2011, mais de 200 obras entregues, de reformas de condomínio a obras industriais.</p>
@@ -137,7 +175,7 @@
     <span>16°40′S 49°15′W</span>
     <span id="hud-state">Modelo estrutural</span>
   </div>
-  <a class="scroll-cue" href="#processo">Veja uma obra sair do papel</a>
+  <a class="scroll-cue" href="/#processo">Veja uma obra sair do papel</a>
 </section>
 
 <section class="clients" aria-label="Clientes">
@@ -161,7 +199,7 @@
       <h2>Engenheiros e arquitetos que planejam antes de construir.</h2>
       <p>Desde 2011, ajudamos síndicos, empresas e famílias de Goiânia a tirar obras do papel — de reformas de condomínio a novas construções. Somos uma equipe de engenheiros e arquitetos que gosta de explicar, planejar e cumprir o combinado, com acompanhamento técnico do canteiro à entrega.</p>
       <div class="integrada"><p><b>Atuação integrada.</b> Com uma área dedicada à incorporação imobiliária, planejamos e executamos de ponta a ponta — o que otimiza custos e dá mais segurança a quem contrata ou investe.</p></div>
-      <div><a class="link-arrow" href="#processo">Veja como trabalhamos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+      <div><a class="link-arrow" href="/#processo">Veja como trabalhamos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
     </div>
     <div class="mvv reveal">
       <article><span>Missão</span><p>Entregar obras com bom atendimento e custo-benefício, sendo referência em qualidade, pontualidade e satisfação do cliente.</p></article>
@@ -193,12 +231,12 @@
       <h2>Do condomínio à indústria, a mesma precisão.</h2>
     </div>
     <div class="svc-list">
-      <a class="svc-row" href="#servico-condominios"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-condominio"/></svg></span><h3>Reformas de condomínios</h3><p>Fachadas, estrutura, impermeabilização e áreas comuns, com o mínimo de impacto na rotina dos moradores.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-<a class="svc-row" href="#servico-retrofit"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-retrofit"/></svg></span><h3>Retrofit de fachadas</h3><p>Recuperação e modernização de fachadas que valorizam o patrimônio e aumentam a eficiência do prédio.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-<a class="svc-row" href="#servico-administracao"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-adm"/></svg></span><h3>Obra por administração</h3><p>Você paga o custo real de materiais e mão de obra; a Basax assume a gestão técnica por uma taxa fixa.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-<a class="svc-row" href="#servico-comerciais"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-comercial"/></svg></span><h3>Obras comerciais</h3><p>Sedes, lojas e modernização de espaços, com cronograma rigoroso para reduzir o tempo de imóvel parado.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-<a class="svc-row" href="#servico-industriais"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-industrial"/></svg></span><h3>Obras industriais</h3><p>Construção e reforma de instalações industriais, do escopo do projeto à entrega das chaves.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-<a class="svc-row" href="#servico-residenciais"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-residencial"/></svg></span><h3>Obras residenciais</h3><p>Casas de médio e alto padrão e reformas de casas e apartamentos, da infraestrutura ao acabamento.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="svc-row" href="/servicos/condominio/"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-condominio"/></svg></span><h3>Reformas de condomínios</h3><p>Fachadas, estrutura, impermeabilização e áreas comuns, com o mínimo de impacto na rotina dos moradores.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+<a class="svc-row" href="/pintura-predial/"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-retrofit"/></svg></span><h3>Retrofit de fachadas</h3><p>Recuperação e modernização de fachadas que valorizam o patrimônio e aumentam a eficiência do prédio.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+<a class="svc-row" href="/servicos/adm/"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-adm"/></svg></span><h3>Obra por administração</h3><p>Você paga o custo real de materiais e mão de obra; a Basax assume a gestão técnica por uma taxa fixa.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+<a class="svc-row" href="/servicos/comercial/"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-comercial"/></svg></span><h3>Obras comerciais</h3><p>Sedes, lojas e modernização de espaços, com cronograma rigoroso para reduzir o tempo de imóvel parado.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+<a class="svc-row" href="/servicos/industrial/"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-industrial"/></svg></span><h3>Obras industriais</h3><p>Construção e reforma de instalações industriais, do escopo do projeto à entrega das chaves.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+<a class="svc-row" href="/servicos/residencial/"><span class="tile"><svg class="ico" aria-hidden="true"><use href="#i-residencial"/></svg></span><h3>Obras residenciais</h3><p>Casas de médio e alto padrão e reformas de casas e apartamentos, da infraestrutura ao acabamento.</p><span class="go" aria-hidden="true"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
 
     </div>
   </div>
@@ -249,7 +287,7 @@
         <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Áreas de trabalho isoladas, acesso controlado e limpeza constante</li>
         <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Parcelamento direto para facilitar a aprovação</li>
       </ul>
-      <a class="btn btn-primary" href="#servico-condominios">Conheça as reformas de condomínio <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-primary" href="/servicos/condominio/">Conheça as reformas de condomínio <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="report" role="img" aria-label="Exemplo ilustrativo de relatório de evolução de obra para o síndico">
       <div class="rp-head"><span class="rp-ico"><svg class="ico" aria-hidden="true"><use href="#i-transp"/></svg></span><div><b>Relatório de evolução</b><span>Condomínio [Nome] · exemplo ilustrativo</span></div></div>
@@ -271,7 +309,7 @@
         <p class="eyebrow">Portfólio</p>
         <h2>Obras que falam por nós.</h2>
       </div>
-      <a class="btn btn-outline" href="#orcamento">Quero uma obra assim <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-outline" href="/#orcamento">Quero uma obra assim <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="pf-grid">
       <article class="pf reveal"><div class="ph"><img src="/img/obras/retrofit-fachada.webp" alt="Equipe da Basax em balancim fazendo o retrofit da fachada de um edifício residencial" width="1000" height="750" loading="lazy"><span class="tag">Retrofit de fachada</span></div><h3>Retrofit de fachada predial</h3><p>Recuperação e pintura da fachada · Goiânia</p></article>
@@ -342,7 +380,7 @@
     <div class="grid-bg" style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px"></div>
     <div class="wrap">
       <div>
-        <p class="crumb"><a href="#inicio">Início</a> / <a href="#servicos">Serviços</a> / <span id="sp-crumb"></span></p>
+        <p class="crumb"><a href="/#inicio">Início</a> / <a href="/#servicos">Serviços</a> / <span id="sp-crumb"></span></p>
         <h1 id="sp-title" tabindex="-1"></h1>
         <p class="lead" id="sp-intro"></p>
       </div>
@@ -369,7 +407,7 @@
         <h2>Fale com um engenheiro sobre a sua obra.</h2>
         <div class="sp-others" id="sp-others"></div>
       </div>
-      <a class="btn btn-primary" href="#orcamento">Solicitar orçamento <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-primary" href="/#orcamento">Solicitar orçamento <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </section>
 </div>
@@ -382,10 +420,10 @@
         <img class="logo" src="/img/logo-white.svg" alt="Basax Engenharia" width="128" height="44" loading="lazy">
         <p style="font-size:15px;max-width:300px">Engenharia de confiança. Obras e reformas em Goiânia desde 2011.</p>
       </div>
-      <div><h4>Serviços</h4><ul><li><a href="#servico-condominios">Reformas de condomínios</a></li><li><a href="#servico-retrofit">Retrofit de fachadas</a></li><li><a href="#servico-administracao">Obra por administração</a></li><li><a href="#servico-comerciais">Obras comerciais</a></li><li><a href="#servico-industriais">Obras industriais</a></li><li><a href="#servico-residenciais">Obras residenciais</a></li></ul></div>
+      <div><h4>Serviços</h4><ul><li><a href="/servicos/condominio/">Reformas de condomínios</a></li><li><a href="/pintura-predial/">Retrofit de fachadas</a></li><li><a href="/servicos/adm/">Obra por administração</a></li><li><a href="/servicos/comercial/">Obras comerciais</a></li><li><a href="/servicos/industrial/">Obras industriais</a></li><li><a href="/servicos/residencial/">Obras residenciais</a></li></ul></div>
       <div><h4>Empresa</h4><ul>
-        <li><a href="#empresa">A empresa</a></li><li><a href="#processo">Como trabalhamos</a></li>
-        <li><a href="#portfolio">Portfólio</a></li><li><a href="#orcamento">Orçamento</a></li>
+        <li><a href="/#empresa">A empresa</a></li><li><a href="/#processo">Como trabalhamos</a></li>
+        <li><a href="/#portfolio">Portfólio</a></li><li><a href="/#orcamento">Orçamento</a></li>
       </ul></div>
       <div><h4>Contato</h4><ul>
         <li><a href="https://wa.me/5562981214963" target="_blank" rel="noopener">(62) 98121-4963</a></li>
